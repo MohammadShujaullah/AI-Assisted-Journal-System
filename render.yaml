@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: ai-journal-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 4000
+      - key: GROQ_MODEL
+        value: llama-3.1-8b-instant
+      - key: OLLAMA_MODEL
+        value: llama3.1:8b
+      # Set these secret values manually in the Render dashboard:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false
+      # Set to your Vercel frontend URL once deployed, e.g.:
+      # https://ai-journal.vercel.app
+      - key: ALLOWED_ORIGINS
+        sync: false

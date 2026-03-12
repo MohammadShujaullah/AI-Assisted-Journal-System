@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+
+    <!-- Sky: deep forest night at top → soft dawn green at horizon -->
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#081a10"/>
+      <stop offset="22%"  stop-color="#153d28"/>
+      <stop offset="50%"  stop-color="#2d6e48"/>
+      <stop offset="76%"  stop-color="#60a86a"/>
+      <stop offset="100%" stop-color="#a4d48c"/>
+    </linearGradient>
+
+    <!-- Warm golden glow near horizon (hidden sun / rising light) -->
+    <radialGradient id="sunGlow" cx="50%" cy="74%" r="34%" fx="50%" fy="74%">
+      <stop offset="0%"   stop-color="#f8e89c" stop-opacity="0.44"/>
+      <stop offset="42%"  stop-color="#f0cf54" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#e8b830" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Soft secondary warm glow offset left for depth -->
+    <radialGradient id="glowLeft" cx="22%" cy="80%" r="28%" fx="22%" fy="80%">
+      <stop offset="0%"   stop-color="#d4f0bc" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#a8d87a" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Moon glow halo -->
+    <filter id="moonBlur">
+      <feGaussianBlur stdDeviation="11"/>
+    </filter>
+
+    <!-- Mist softener -->
+    <filter id="mistBlur">
+      <feGaussianBlur stdDeviation="3.5"/>
+    </filter>
+
+  </defs>
+
+  <!-- ── Sky canvas ──────────────────────────────────── -->
+  <rect width="1440" height="900" fill="url(#sky)"/>
+  <rect width="1440" height="900" fill="url(#sunGlow)"/>
+  <rect width="1440" height="900" fill="url(#glowLeft)"/>
+
+  <!-- ── Stars ───────────────────────────────────────── -->
+  <g fill="#ffffff">
+    <circle cx="118"  cy="58"  r="1.4" opacity="0.58"/>
+    <circle cx="248"  cy="34"  r="1.0" opacity="0.72"/>
+    <circle cx="374"  cy="88"  r="1.5" opacity="0.50"/>
+    <circle cx="495"  cy="48"  r="1.2" opacity="0.68"/>
+    <circle cx="628"  cy="22"  r="1.5" opacity="0.76"/>
+    <circle cx="752"  cy="70"  r="1.0" opacity="0.62"/>
+    <circle cx="884"  cy="42"  r="1.4" opacity="0.66"/>
+    <circle cx="1010" cy="26"  r="1.0" opacity="0.72"/>
+    <circle cx="1148" cy="78"  r="1.5" opacity="0.52"/>
+    <circle cx="1298" cy="54"  r="1.2" opacity="0.62"/>
+    <circle cx="1405" cy="90"  r="1.4" opacity="0.54"/>
+    <!-- second row, dimmer -->
+    <circle cx="68"   cy="148" r="1.0" opacity="0.42"/>
+    <circle cx="195"  cy="128" r="1.2" opacity="0.48"/>
+    <circle cx="332"  cy="162" r="0.9" opacity="0.40"/>
+    <circle cx="568"  cy="140" r="1.3" opacity="0.50"/>
+    <circle cx="710"  cy="112" r="0.9" opacity="0.44"/>
+    <circle cx="935"  cy="135" r="1.1" opacity="0.46"/>
+    <circle cx="1168" cy="118" r="1.0" opacity="0.48"/>
+    <circle cx="1356" cy="145" r="1.2" opacity="0.42"/>
+    <!-- scattered sparkles -->
+    <circle cx="162"  cy="195" r="0.8" opacity="0.34"/>
+    <circle cx="440"  cy="178" r="0.9" opacity="0.36"/>
+    <circle cx="798"  cy="168" r="0.8" opacity="0.34"/>
+    <circle cx="1080" cy="185" r="0.9" opacity="0.36"/>
+    <circle cx="1430" cy="172" r="0.8" opacity="0.34"/>
+  </g>
+
+  <!-- ── Moon ────────────────────────────────────────── -->
+  <!-- Soft outer glow -->
+  <circle cx="1098" cy="102" r="38" fill="#ede8c8" opacity="0.30" filter="url(#moonBlur)"/>
+  <!-- Moon surface -->
+  <circle cx="1098" cy="102" r="26" fill="#ece0b2" opacity="0.54"/>
+  <!-- Crescent shadow (slightly offset circle in sky colour) -->
+  <circle cx="1112" cy="96"  r="23" fill="#153d28" opacity="0.78"/>
+  <!-- Moon crater hints -->
+  <circle cx="1088" cy="108" r="3.5" fill="#d8cc9a" opacity="0.22"/>
+  <circle cx="1100" cy="95"  r="2.5" fill="#d8cc9a" opacity="0.18"/>
+
+  <!-- ── Distant mountain range (lightest, furthest) ── -->
+  <path fill="#1e5c3c" opacity="0.58"
+    d="M0,572
+       C 80,482 165,538 260,455
+       C 345,376 415,488 515,422
+       C 605,361 678,456 765,390
+       C 851,325 928,442 1022,366
+       C 1108,298 1185,416 1272,350
+       C 1350,294 1410,376 1440,342
+       L1440,900 L0,900 Z"/>
+
+  <!-- ── Second mountain range (slightly closer) ────── -->
+  <path fill="#123d28" opacity="0.80"
+    d="M0,632
+       C  65,568 138,602 208,541
+       C  276,482 345,556 415,515
+       C  484,476 552,550 625,510
+       C  697,472 765,546 838,506
+       C  910,468 978,542 1052,502
+       C  1124,463 1192,538 1264,496
+       C  1332,458 1394,528 1440,493
+       L1440,900 L0,900 Z"/>
+
+  <!-- ── Atmospheric mist layer over mountains ──────── -->
+  <rect x="0" y="538" width="1440" height="88"
+    fill="#c8e8c4" opacity="0.08" filter="url(#mistBlur)"/>
+
+  <!-- ── Near rolling forest hills ─────────────────── -->
+  <path fill="#0b3120" opacity="0.92"
+    d="M0,708
+       C  56,648 118,680 184,622
+       C  248,566 314,640 382,599
+       C  448,560 514,635 580,594
+       C  646,554 712,630 778,590
+       C  844,550 910,628 976,588
+       C  1042,549 1108,626 1174,586
+       C  1240,547 1306,625 1370,585
+       C  1408,562 1432,610 1440,578
+       L1440,900 L0,900 Z"/>
+
+  <!-- ── Pine forest silhouette (background row) ────── -->
+  <!-- Ground at y=722, peaks vary 558–628, dense zigzag -->
+  <path fill="#061c10"
+    d="M0,900  L0,718
+       L 18,578  L 36,718  L 54,615  L 72,718  L 90,598  L108,718
+       L126,568  L144,718  L162,628  L180,718  L198,585  L216,718
+       L234,605  L252,718  L270,575  L288,718  L306,618  L324,718
+       L342,588  L360,718  L378,562  L396,718  L414,600  L432,718
+       L450,622  L468,718  L486,558  L504,718  L522,595  L540,718
+       L558,612  L576,718  L594,578  L612,718  L630,624  L648,718
+       L666,592  L684,718  L702,568  L720,718  L738,614  L756,718
+       L774,585  L792,718  L810,560  L828,718  L846,608  L864,718
+       L882,620  L900,718  L918,582  L936,718  L954,602  L972,718
+       L990,572  L1008,718 L1026,626 L1044,718 L1062,590 L1080,718
+       L1098,575 L1116,718 L1134,614 L1152,718 L1170,594 L1188,718
+       L1206,562 L1224,718 L1242,606 L1260,718 L1278,588 L1296,718
+       L1314,576 L1332,718 L1350,620 L1368,718 L1386,584 L1404,718
+       L1422,600 L1440,718
+       L1440,900 Z"/>
+
+  <!-- ── Pine forest silhouette (foreground row) ────── -->
+  <!-- Ground y=790, peaks vary 638–682, taller and darker = closer -->
+  <path fill="#030d07"
+    d="M0,900  L0,786
+       L 18,648  L 36,786  L 54,674  L 72,786  L 90,642  L108,786
+       L126,668  L144,786  L162,655  L180,786  L198,644  L216,786
+       L234,672  L252,786  L270,640  L288,786  L306,664  L324,786
+       L342,650  L360,786  L378,638  L396,786  L414,668  L432,786
+       L450,656  L468,786  L486,642  L504,786  L522,676  L540,786
+       L558,638  L576,786  L594,662  L612,786  L630,648  L648,786
+       L666,640  L684,786  L702,674  L720,786  L738,658  L756,786
+       L774,636  L792,786  L810,654  L828,786  L846,644  L864,786
+       L882,672  L900,786  L918,638  L936,786  L954,656  L972,786
+       L990,646  L1008,786 L1026,632 L1044,786 L1062,668 L1080,786
+       L1098,652 L1116,786 L1134,640 L1152,786 L1170,676 L1188,786
+       L1206,642 L1224,786 L1242,660 L1260,786 L1278,636 L1296,786
+       L1314,652 L1332,786 L1350,644 L1368,786 L1386,670 L1404,786
+       L1422,646 L1440,786
+       L1440,900 Z"/>
+
+  <!-- ── Ground floor ──────────────────────────────── -->
+  <rect x="0" y="855" width="1440" height="45" fill="#01080404"/>
+
+  <!-- ── Foreground grass / shrub accent patches ────── -->
+  <ellipse cx="155"  cy="876" rx="135" ry="17" fill="#143a15" opacity="0.68"/>
+  <ellipse cx="510"  cy="870" rx="175" ry="19" fill="#112e13" opacity="0.58"/>
+  <ellipse cx="860"  cy="874" rx="158" ry="21" fill="#143a15" opacity="0.62"/>
+  <ellipse cx="1240" cy="869" rx="148" ry="17" fill="#112e13" opacity="0.58"/>
+  <ellipse cx="1420" cy="878" rx="90"  ry="14" fill="#143a15" opacity="0.55"/>
+
+  <!-- ── Fireflies / light orbs near tree line ──────── -->
+  <circle cx="310"  cy="700" r="2.2" fill="#d4f0a0" opacity="0.45"/>
+  <circle cx="610"  cy="690" r="1.8" fill="#c8eca8" opacity="0.40"/>
+  <circle cx="870"  cy="706" r="2.0" fill="#d4f0a0" opacity="0.42"/>
+  <circle cx="1140" cy="694" r="2.2" fill="#c8eca8" opacity="0.45"/>
+  <circle cx="1360" cy="702" r="1.8" fill="#d4f0a0" opacity="0.40"/>
+
+</svg>
