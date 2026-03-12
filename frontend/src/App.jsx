@@ -1,8 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
 
-// In production set VITE_API_URL to your deployed backend URL (e.g. https://ai-journal-backend.onrender.com)
-// In local dev leave it unset — Vite's proxy forwards /api to localhost:4000
-const API_BASE = import.meta.env.VITE_API_URL || "";
+// Prefer VITE_API_URL when configured. Otherwise, use the deployed Render backend in production
+// and keep the Vite proxy path for local development.
+const API_BASE = import.meta.env.VITE_API_URL || (import.meta.env.PROD
+  ? "https://ai-assisted-journal-system.onrender.com"
+  : "");
 
 const ambienceOptions = ["forest", "ocean", "mountain"];
 
