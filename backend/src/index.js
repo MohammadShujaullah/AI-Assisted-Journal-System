@@ -16,13 +16,26 @@ const allowedOrigins = (process.env.ALLOWED_ORIGINS || process.env.ALLOWED_ORIGI
   .map((o) => o.trim())
   .filter(Boolean);
 
+function isAllowedVercelOrigin(origin) {
+  try {
+    const parsed = new URL(origin);
+    return parsed.protocol === "https:" && parsed.hostname.endsWith(".vercel.app");
+  } catch {
+    return false;
+  }
+}
+
 app.use(express.json({ limit: "1mb" }));
 app.use(
   cors({
     origin: (origin, callback) => {
       // Allow requests with no origin (e.g. curl, Postman)
-      if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
-      callback(new Error(`CORS: origin ${origin} not allowed`));
+      if (!origin || allowedOrigins.includes(origin) || isAllowedVercelOrigin(origin)) {
+        return callback(null, true);
+      }
+
+      // Deny unknown origins without turning it into a server error.
+      return callback(null, false);
     }
   })
 );
