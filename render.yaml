@@ -9,8 +9,6 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 4000
       - key: GROQ_MODEL
         value: llama-3.1-8b-instant
       - key: OLLAMA_MODEL
